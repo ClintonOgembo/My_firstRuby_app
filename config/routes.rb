@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get '/show', to: 'demo#show'
   patch '/update', to: 'demo#update'
   delete '/delete', to: 'demo#delete'
+  get '/movie_genres', to: 'movie_genres#index'
 end
