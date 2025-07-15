@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   delete '/delete', to: 'demo#delete'
   get '/movie_genres', to: 'movie_genres#index'
   post '/movie_genres', to: 'movie_genres#create'
+  get '/movie_genres/:id/edit', to: 'movie_genres#edit'    # i have a question here, why am i not able to edit....
+  patch '/movie_genres/:id', to: 'movie_genres#update'
 end
