@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   patch '/update', to: 'demo#update'
   delete '/delete', to: 'demo#delete'
   get '/movie_genres', to: 'movie_genres#index'
+  post '/movie_genres', to: 'movie_genres#create'
 end
