@@ -13,4 +13,20 @@ class MovieGenresController < ApplicationController
     render json: genre, status: :created
   end
 
+  def edit
+    genre = MovieGenre.find(params[:id])
+    render json: genre
+  end
+
+  def update
+    genre = MovieGenre.find(params[:id])
+    genre.update!(name: params[:name])
+    render json: genre
+  end
+
+  def delete
+    genre = MovieGenre.find(params[:id])
+    genre.destroy
+    render json: { message: 'genre deleted'}
+
 end
