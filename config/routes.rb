@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get "/current_time", to: "time#current_time"
   resources :currency_convertions, only: :create
   #resources :demo, only: [:show, :update, :destroy]
+
   get '/show', to: 'demo#show'
   patch '/update', to: 'demo#update'
   delete '/delete', to: 'demo#delete'
   get '/movie_genres', to: 'movie_genres#index'
   post '/movie_genres', to: 'movie_genres#create'
-  get '/movie_genres/:id/edit', to: 'movie_genres#edit'    # i have a question here, why am i not able to edit....
+  get '/movie_genres/:id/edit', to: 'movie_genres#edit'
   patch '/movie_genres/:id', to: 'movie_genres#update'
 end
