@@ -1,5 +1,4 @@
 class MovieGenresController < ApplicationController
-  MY_CONSTANT = MovieGenresController
   skip_before_action :verify_authenticity_token
   def index
     render json: MovieGenre.all

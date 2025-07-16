@@ -10,4 +10,5 @@ class CurrencyConvertionsController < ApplicationController
             status: :ok
         )
     end    
-end    
+end   
+ 
