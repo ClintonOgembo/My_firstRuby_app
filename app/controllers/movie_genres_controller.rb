@@ -28,5 +28,6 @@ class MovieGenresController < ApplicationController
     genre = MovieGenre.find(params[:id])
     genre.destroy
     render json: { message: 'genre deleted'}
+  end
 
 end
