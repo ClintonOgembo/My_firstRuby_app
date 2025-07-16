@@ -1,6 +1,6 @@
 class CurrencyConvertionsController < ApplicationController
     def create
-        amount = params[ :amount ].to_f
+        amount = params[:amount].to_f
         render(
             json:{ 
                 TZS: (amount * 20.40).round(2),
@@ -10,4 +10,5 @@ class CurrencyConvertionsController < ApplicationController
             status: :ok
         )
     end    
-end    
+end   
+ 
