@@ -4,6 +4,8 @@ default: &default
   username: clintonjacos
   password: Clinton@1234
   host: localhost
+  pool: 5
+  port: 5432
 
 development:
   <<: *default
