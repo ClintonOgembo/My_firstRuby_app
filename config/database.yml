@@ -20,3 +20,4 @@ production:
   database: my_firstApp_ruby_development
   username: clintonjacos
   password: <%= ENV['MY_FIRSTAPP_RUBY_DATABASE_PASSWORD'] %>
+  
