@@ -3,7 +3,7 @@ class CreatePlayers < ActiveRecord::Migration[8.0]
     create_table :players do |t|
       t.timestamps
       t.string :name
-      t.string :email
+      t.string :email, null: false
       t.integer :age
     end
   end

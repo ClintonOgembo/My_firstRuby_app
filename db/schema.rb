@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_21_184019) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_22_064640) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_21_184019) do
     t.string "diagnosis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "temprature", precision: 2, scale: 2
   end
 
   create_table "players", force: :cascade do |t|
@@ -42,6 +43,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_21_184019) do
     t.text "background"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "level"
+    t.string "nick_name"
+    t.bigint "players_id", null: false
+    t.index ["players_id"], name: "index_teams_on_players_id"
   end
 
   create_table "users", id: false, force: :cascade do |t|
@@ -52,4 +57,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_21_184019) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "teams", "players", column: "players_id"
 end
