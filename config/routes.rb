@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :patients
   get "time/current_time"
   get "up" => "rails/health#show", as: :rails_health_check
   get "/current_time", to: "time#current_time"
