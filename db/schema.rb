@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_30_174802) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_01_131315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -88,6 +88,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_174802) do
     t.string "level"
     t.string "nickname"
     t.integer "no_of_players"
+  end
+
+  create_table "tournaments", id: false, force: :cascade do |t|
+    t.integer "year", null: false
+    t.string "host_country", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: false, force: :cascade do |t|
