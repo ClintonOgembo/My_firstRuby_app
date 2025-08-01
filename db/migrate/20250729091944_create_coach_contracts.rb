@@ -1,8 +1,8 @@
 class CreateCoachContracts < ActiveRecord::Migration[8.0]
   def change
     create_table :coach_contracts, id: :uuid do |t|
-      t.uuid :coach_id, null: false
-      t.uuid :team_id, null: false
+      t.references :coaches, null: false
+      t.references :teams, null: false
       t.integer :start_year, null: false
       t.integer :end_year
       t.bigint :contract_value, null: false, default: 0
