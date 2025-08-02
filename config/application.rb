@@ -14,4 +14,3 @@ module MyFirstAppRuby
     end
   end
 end
-
