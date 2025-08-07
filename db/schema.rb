@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_29_091944) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_01_131315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -29,6 +29,23 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_29_091944) do
     t.text "name", null: false
     t.text "nationality"
     t.integer "rating", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "match_results", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "match_id", null: false
+    t.uuid "team_id", null: false
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "home_team_id", null: false
+    t.uuid "away_team_id", null: false
+    t.datetime "match_date", null: false
+    t.uuid "referee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -56,6 +73,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_29_091944) do
     t.integer "age"
   end
 
+  create_table "referees", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "teams", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "location"
@@ -65,6 +88,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_29_091944) do
     t.string "level"
     t.string "nickname"
     t.integer "no_of_players"
+  end
+
+  create_table "tournaments", id: false, force: :cascade do |t|
+    t.integer "year", null: false
+    t.string "host_country", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: false, force: :cascade do |t|
@@ -78,4 +108,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_29_091944) do
 
   add_foreign_key "coach_contracts", "coaches"
   add_foreign_key "coach_contracts", "teams"
+  add_foreign_key "match_results", "matches"
+  add_foreign_key "match_results", "teams"
+  add_foreign_key "matches", "referees"
+  add_foreign_key "matches", "teams", column: "away_team_id"
+  add_foreign_key "matches", "teams", column: "home_team_id"
 end
