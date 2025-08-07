@@ -8,7 +8,7 @@ class CreateMatches < ActiveRecord::Migration[8.0]
 
       t.timestamps
     end
-    add_foreign_key :matches, :team, column: :home_team_id
-    add_foreign_key :matches, :team, column: :away_team_id
+    add_foreign_key :matches, :teams, column: :home_team_id
+    add_foreign_key :matches, :teams, column: :away_team_id
   end
 end
